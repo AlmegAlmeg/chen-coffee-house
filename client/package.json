@@ -11,6 +11,8 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.4",
+    "router-dom": "^2.2.9",
     "sass": "^1.56.1"
   },
   "devDependencies": {
