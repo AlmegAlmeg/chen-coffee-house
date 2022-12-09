@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.scss";
 
-export default function Navbar() {
+export default function Navbar(): JSX.Element {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   return (

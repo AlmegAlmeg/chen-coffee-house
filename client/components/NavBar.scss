@@ -1,6 +1,7 @@
 .navigation {
   position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 120px;
   width: 100%;
@@ -16,16 +17,16 @@
 }
 .navigation-menu {
   margin-left: auto;
-  padding: 0;
+  padding: 1.5rem;
 }
 
 .navigation-menu ul {
   display: flex;
+  gap: 2rem;
 }
 
 .navigation-menu li {
   list-style-type: none;
-  margin: 1rem;
 }
 
 .navigation-menu li a {
