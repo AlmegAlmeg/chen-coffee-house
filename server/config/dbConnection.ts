@@ -18,5 +18,3 @@ mongoose
   .catch((err) => {
     console.log(`Error: ${err.message}`);
   });
-
-const { MongoClient, ServerApiVersion } = require('mongodb');
