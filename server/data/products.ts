@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import Product from '../model/product';
+import ProductInstance from '../model/product';
 
 const defaultProducts = [
   {
