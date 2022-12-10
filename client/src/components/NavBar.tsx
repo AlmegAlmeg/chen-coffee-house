@@ -7,7 +7,7 @@ export default function Navbar(): JSX.Element {
 
   return (
     <nav className="navigation">
-      <img className="logo" src="./src/pics/logo-guitar.png" alt="chen" />
+      <img className="logo" src="./assets/logo-guitar.png" alt="chen" />
       <button
         className="hamburger"
         onClick={() => {
