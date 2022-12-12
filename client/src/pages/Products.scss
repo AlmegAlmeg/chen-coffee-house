@@ -5,7 +5,25 @@
 }
 
 .single-product {
-  border: 1px solid rgb(243, 242, 242);
+  border: 1.5px solid rgb(243, 242, 242);
   border-radius: 8px;
   padding: 1rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.product-img {
+  margin-right: 30%;
+  margin-top: 20px;
+}
+
+.product-btn {
+  background-color: rgb(245, 216, 162);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-right: 80%;
 }

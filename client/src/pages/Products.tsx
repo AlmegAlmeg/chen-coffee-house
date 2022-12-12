@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Products.scss";
+import { TbTruckDelivery } from "react-icons/tb";
 
 export default function ProductPage() {
   const [products, setProducts] = useState<Array<any> | undefined>([]);
@@ -19,7 +20,7 @@ export default function ProductPage() {
 
   return (
     <>
-      <h1>מוצרים</h1>
+      <br></br>
       <div className="products">
         {products &&
           products.map((prod: any, i: number) => {
@@ -27,6 +28,7 @@ export default function ProductPage() {
               <div className="single-product" key={i}>
                 <h3>{prod.title}</h3>
                 <img
+                  className="product-img"
                   src={prod.imageUrl}
                   style={{
                     height: "200px",
@@ -35,12 +37,14 @@ export default function ProductPage() {
                   }}
                   alt=""
                 />
-                <p className="description">{prod.description}</p>
+                {/* <p className="description">{prod.description}</p> */}
                 <p className="delivery-days">
-                  {" "}
+                  <TbTruckDelivery />
+                  &nbsp;
                   {prod.daysToDeliver}&nbsp; ימי עסקים
                 </p>
                 <p className="price">₪{prod.price}</p>
+                <button className="product-btn">עוד מידע</button>
               </div>
             );
           })}

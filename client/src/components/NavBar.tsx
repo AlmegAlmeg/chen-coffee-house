@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.scss";
+import { CgShoppingCart } from "react-icons/cg";
+import { GiGuitarBassHead } from "react-icons/gi";
+import { AiOutlineHome } from "react-icons/ai";
 
 export default function Navbar(): JSX.Element {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -34,16 +37,22 @@ export default function Navbar(): JSX.Element {
       >
         <ul>
           <li>
-            <NavLink to="/">HOME</NavLink>
+            <NavLink to="/">
+              {" "}
+              <AiOutlineHome />
+              &nbsp; עמוד הבית
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/products">PRODUCTS</NavLink>
+            <NavLink to="/products">
+              <GiGuitarBassHead />
+              &nbsp; מוצרים
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/login">LOGIN</NavLink>
-          </li>
-          <li>
-            <NavLink to="/cart">CART</NavLink>
+            <NavLink to="/cart">
+              <CgShoppingCart />
+            </NavLink>
           </li>
         </ul>
       </div>
