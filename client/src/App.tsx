@@ -14,7 +14,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductPage />} />
-          <Route path="/single" element={<SingleProduct />} />
+          <Route path="/:id" element={<SingleProduct />} />
         </Routes>
       </main>
     </>

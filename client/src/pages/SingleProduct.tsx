@@ -12,7 +12,7 @@ const SingleProduct = () => {
       .then((res) => setProduct(res.data.data));
   }, []);
 
-  return <div className="single-product"></div>;
+  return <div className="single-product">Single Product</div>;
 };
 
 export default SingleProduct;
