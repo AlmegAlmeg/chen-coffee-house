@@ -1,14 +1,13 @@
 import { Router, Request, Response } from 'express';
 import defaultProducts from '../data/products';
-import Product from '../model/product';
+import { Product, ProductInterface } from '../model/product';
 
 const router: Router = Router();
 
 /* Get all products */
 router.get('/', async (req: Request, res: Response): Promise<void> => {
-  console.log('test');
   try {
-    const products: Array<typeof Product> = await Product.find();
+    const products: Array<ProductInterface> = await Product.find();
 
     res.status(200).json({ data: products });
   } catch (err) {
@@ -16,15 +15,15 @@ router.get('/', async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-/* Get single product by id */
-router.get('/:id', async (req: Request, res: Response): Promise<void> => {
+/* Get single product by slug */
+router.get('/:slug', async (req: Request, res: Response): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { slug } = req.params;
 
-    const product: typeof Product | null = await Product.findById(id);
+    const product: ProductInterface | null = await Product.findOne({ slug });
 
     if (product === null) {
-      res.status(400).json({ message: 'No product found' });
+      res.status(200).json({ message: 'No product found' });
     }
 
     res.status(200).json({ data: product });
@@ -35,13 +34,23 @@ router.get('/:id', async (req: Request, res: Response): Promise<void> => {
 
 export default router;
 
-// router.get('/mock', async (req: Request, res: Response) => {
+// router.post('/mock', async (req: Request, res: Response) => {
 //   try {
 //     const products = defaultProducts;
 //     products.forEach(async (prod) => {
 //       await Product.create(prod);
 //     });
 //     res.status(200).json({ message: `All products imported!` });
+//   } catch (err) {
+//     res.status(500).json({ message: `Internal server error: ${err}` });
+//   }
+// });
+//! DO NOT USE THIS FUNCTION
+// router.delete('/delete-all', async (req: Request, res: Response) => {
+//   try {
+//     await Product.deleteMany();
+
+//     res.status(200).json({ message: `All products deleted` });
 //   } catch (err) {
 //     res.status(500).json({ message: `Internal server error: ${err}` });
 //   }
