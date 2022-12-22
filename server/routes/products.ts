@@ -6,6 +6,7 @@ const router: Router = Router();
 
 /* Get all products */
 router.get('/', async (req: Request, res: Response): Promise<void> => {
+  console.log('test');
   try {
     const products: Array<typeof Product> = await Product.find();
 
