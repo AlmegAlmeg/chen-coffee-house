@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import "./Products.scss";
-import { TbTruckDelivery } from "react-icons/tb";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import './Products.scss';
+import { TbTruckDelivery } from 'react-icons/tb';
 
 export default function ProductPage() {
   const [products, setProducts] = useState<Array<any> | undefined>([]);
@@ -9,7 +9,7 @@ export default function ProductPage() {
   useEffect(() => {
     setProducts(undefined);
 
-    let url = `https://squid-app-c8djx.ondigitalocean.app/products`;
+    let url = `https://king-prawn-app-zovdf.ondigitalocean.app/products`;
 
     axios.get(url).then((res) => {
       if (!res || res.status !== 200) return;
@@ -31,9 +31,9 @@ export default function ProductPage() {
                   className="product-img"
                   src={prod.imageUrl}
                   style={{
-                    height: "200px",
+                    height: '200px',
                     aspectRatio: 1 / 1,
-                    objectFit: "contain",
+                    objectFit: 'contain',
                   }}
                   alt=""
                 />
