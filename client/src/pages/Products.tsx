@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { CiCoffeeBean } from "react-icons/ci";
 import "./Products.scss";
-import { TbTruckDelivery } from "react-icons/tb";
 
 export default function ProductPage() {
   const [products, setProducts] = useState<Array<any> | undefined>([]);
@@ -38,8 +38,13 @@ export default function ProductPage() {
                   }}
                   alt=""
                 />
-                {/* <p className="description">{prod.description}</p> */}
 
+                <p className="intensity">
+                  <CiCoffeeBean />
+
+                  {prod.intensity}
+                </p>
+                <br></br>
                 <p className="price">₪{prod.price}</p>
                 <button className="product-btn">עוד מידע</button>
               </div>

@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./NavBar.scss";
 import { CgShoppingCart } from "react-icons/cg";
-import { GiGuitarBassHead } from "react-icons/gi";
-import { AiOutlineHome } from "react-icons/ai";
+import "./NavBar.scss";
 
 export default function Navbar(): JSX.Element {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   return (
     <nav className="navigation">
-      <img className="logo" src="./assets/coffee-logo.png" alt="chen" />
+      <img className="logo" src="./assets/coffee-logo1.png" alt="chen" />
       <button
         className="hamburger"
         onClick={() => {
@@ -37,10 +35,10 @@ export default function Navbar(): JSX.Element {
       >
         <ul>
           <li>
-            <NavLink to="/"> &nbsp; עמוד הבית</NavLink>
+            <NavLink to="/"> עמוד הבית</NavLink>
           </li>
           <li>
-            <NavLink to="/products">&nbsp; מוצרים</NavLink>
+            <NavLink to="/products">מוצרים</NavLink>
           </li>
           <li>
             <NavLink to="/cart">

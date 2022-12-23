@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const SingleProduct = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`https://squid-app-c8djx.ondigitalocean.app/products/${id}`)
+      .get(`https://squid-app-c8djx.ondigitalocean.app/products/${slug}`)
       .then((res) => setProduct(res.data.data));
   }, []);
 
