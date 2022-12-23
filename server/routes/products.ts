@@ -9,7 +9,7 @@ router.get('/', async (req: Request, res: Response): Promise<void> => {
   try {
     const products: Array<ProductInterface> = await Product.find();
 
-    res.status(200).json({ data: products });
+    res.status(200).json({ products });
   } catch (err) {
     res.status(500).json({ message: `Internal server error: ${err}` });
   }
@@ -24,9 +24,10 @@ router.get('/:slug', async (req: Request, res: Response): Promise<void> => {
 
     if (product === null) {
       res.status(200).json({ message: 'No product found' });
+      return;
     }
 
-    res.status(200).json({ data: product });
+    res.status(200).json({ product });
   } catch (err) {
     res.status(500).json({ message: `Internal server error: ${err}` });
   }
