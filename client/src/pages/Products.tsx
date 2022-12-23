@@ -1,10 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import "./Products.scss";
-import { TbTruckDelivery } from "react-icons/tb";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useCart } from '../context/CartContext';
+import './Products.scss';
 
 export default function ProductPage() {
   const [products, setProducts] = useState<Array<any> | undefined>([]);
+
+  /**
+   * This is our custom cart hook. As you can
+   * see, we can take any function or state
+   * stored in our context and distruct it here.
+   */
+  const { getItemQuantity, items } = useCart();
 
   useEffect(() => {
     setProducts(undefined);
@@ -32,9 +39,9 @@ export default function ProductPage() {
                   className="product-img"
                   src={prod.imageUrl}
                   style={{
-                    height: "200px",
+                    height: '200px',
                     aspectRatio: 1 / 1,
-                    objectFit: "contain",
+                    objectFit: 'contain',
                   }}
                   alt=""
                 />
