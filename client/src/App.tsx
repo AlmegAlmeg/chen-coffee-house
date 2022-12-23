@@ -1,14 +1,15 @@
-import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import Navbar from "./components/NavBar";
-import ProductPage from "./pages/Products";
-import SingleProduct from "./pages/SingleProduct";
-import "./App.scss";
-import "./main.scss";
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import Navbar from './components/NavBar';
+import ProductPage from './pages/Products';
+import SingleProduct from './pages/SingleProduct';
+import './App.scss';
+import './main.scss';
+import CartProvider from './context/CartContext';
 
 function App(): JSX.Element {
   return (
-    <>
+    <CartProvider>
       <Navbar />
       <main className="main-content">
         <Routes>
@@ -17,7 +18,7 @@ function App(): JSX.Element {
           <Route path="/:id" element={<SingleProduct />} />
         </Routes>
       </main>
-    </>
+    </CartProvider>
   );
 }
 
