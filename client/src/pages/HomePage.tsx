@@ -1,5 +1,5 @@
-import './HomePage.scss';
+import "./HomePage.scss";
 
 export default function HomePage() {
-  return <h1>This is My Home Page!</h1>;
+  return <img className="banner" src="./assets/banner.png" alt="chen" />;
 }

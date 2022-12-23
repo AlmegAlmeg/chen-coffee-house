@@ -10,7 +10,7 @@ export default function Navbar(): JSX.Element {
 
   return (
     <nav className="navigation">
-      <img className="logo" src="./assets/logo-guitar.png" alt="chen" />
+      <img className="logo" src="./assets/coffee-logo.png" alt="chen" />
       <button
         className="hamburger"
         onClick={() => {
@@ -37,17 +37,10 @@ export default function Navbar(): JSX.Element {
       >
         <ul>
           <li>
-            <NavLink to="/">
-              {" "}
-              <AiOutlineHome />
-              &nbsp; עמוד הבית
-            </NavLink>
+            <NavLink to="/"> &nbsp; עמוד הבית</NavLink>
           </li>
           <li>
-            <NavLink to="/products">
-              <GiGuitarBassHead />
-              &nbsp; מוצרים
-            </NavLink>
+            <NavLink to="/products">&nbsp; מוצרים</NavLink>
           </li>
           <li>
             <NavLink to="/cart">
