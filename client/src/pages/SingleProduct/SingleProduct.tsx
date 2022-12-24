@@ -8,11 +8,11 @@ const SingleProduct = () => {
 
   useEffect(() => {
     axios
-      .get(`https://squid-app-c8djx.ondigitalocean.app/products/${slug}`)
-      .then((res) => setProduct(res.data.data));
+      .get(`https://king-prawn-app-zovdf.ondigitalocean.app/products/${slug}`)
+      .then((res) => setProduct(res.data));
   }, []);
 
-  return <div className="single-product">Single Product</div>;
+  return <div className="single-product"></div>;
 };
 
 export default SingleProduct;

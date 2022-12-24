@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
-import { CartItem } from '../model/CartItem';
+import { createContext, ReactNode, useContext, useState } from "react";
+import { CartItem } from "../model/CartItem";
 
 /**
  * We're going to manage the entire cart state from here
@@ -149,7 +149,11 @@ const CartProvider = (props: CartProviderProps): ReactNode => {
    * Eventually this is how we provide the state,
    * this is what react syntax looks like.
    */
-  return <CartContext.Provider value={contextValue}>{props.children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={contextValue}>
+      {props.children}
+    </CartContext.Provider>
+  );
 };
 
 /**

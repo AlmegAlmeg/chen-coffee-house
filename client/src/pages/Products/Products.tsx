@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../../context/CartContext";
 import { CiCoffeeBean } from "react-icons/ci";
 import "./Products.scss";
+import { Link } from "react-router-dom";
 
 export default function ProductPage() {
   const [products, setProducts] = useState<Array<any> | undefined>([]);
@@ -49,12 +50,13 @@ export default function ProductPage() {
 
                 <p className="intensity">
                   <CiCoffeeBean />
-
                   {prod.intensity}
                 </p>
                 <br></br>
                 <p className="price">₪{prod.price}</p>
-                <button className="product-btn">עוד מידע</button>
+                <Link to="./SingelProduct" className="product-btn">
+                  עוד מידע
+                </Link>
               </div>
             );
           })}
