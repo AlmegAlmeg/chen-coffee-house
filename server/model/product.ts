@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 export interface ProductInterface {
+  id: string;
   title: string;
   description: string;
   imageUrl: string;
@@ -13,6 +14,11 @@ export interface ProductInterface {
 }
 
 const product = new Schema<ProductInterface>({
+  id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   title: {
     type: String,
     required: true,

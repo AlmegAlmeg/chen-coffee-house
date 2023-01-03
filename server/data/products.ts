@@ -1,7 +1,9 @@
+import { randomUUID } from 'crypto';
 import { ProductInterface } from '../model/product';
 
 const defaultProducts: Array<ProductInterface> = [
   {
+    id: randomUUID(),
     title: "ארפג'יו ",
     description:
       "תערובת הקפה ארפג'יו בהשראת קלייה מפירנצה והיא בדרגת חוזק 9. היא מתאימה למי שאוהב מרירות בינונית ומרקם קפה מפנק במיוחד. התערובת מצויינת גם כאספרסו קצר או ריסטרטו וגם עם חלב. ",
@@ -15,6 +17,7 @@ const defaultProducts: Array<ProductInterface> = [
     slug: 'arpeggio-capsule-coffee',
   },
   {
+    id: randomUUID(),
     title: 'שטוקהולם לונגו ',
     description:
       'שטוקלהום פורטיסיו לונגו לאספרסו ארוך היא תערובת קפה עוצמתית בדרגת חוזק 8 עם מרירות מאוזנת במיוחד ומרקם חלק בחלל הפה.',

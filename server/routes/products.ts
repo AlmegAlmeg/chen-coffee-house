@@ -35,24 +35,24 @@ router.get('/:slug', async (req: Request, res: Response): Promise<void> => {
 
 export default router;
 
-// router.post('/mock', async (req: Request, res: Response) => {
-//   try {
-//     const products = defaultProducts;
-//     products.forEach(async (prod) => {
-//       await Product.create(prod);
-//     });
-//     res.status(200).json({ message: `All products imported!` });
-//   } catch (err) {
-//     res.status(500).json({ message: `Internal server error: ${err}` });
-//   }
-// });
-//! DO NOT USE THIS FUNCTION
-// router.delete('/delete-all', async (req: Request, res: Response) => {
-//   try {
-//     await Product.deleteMany();
+router.post('/mock', async (req: Request, res: Response) => {
+  try {
+    const products = defaultProducts;
+    products.forEach(async (prod) => {
+      await Product.create(prod);
+    });
+    res.status(200).json({ message: `All products imported!` });
+  } catch (err) {
+    res.status(500).json({ message: `Internal server error: ${err}` });
+  }
+});
+// ! DO NOT USE THIS FUNCTION
+router.delete('/delete-all', async (req: Request, res: Response) => {
+  try {
+    await Product.deleteMany();
 
-//     res.status(200).json({ message: `All products deleted` });
-//   } catch (err) {
-//     res.status(500).json({ message: `Internal server error: ${err}` });
-//   }
-// });
+    res.status(200).json({ message: `All products deleted` });
+  } catch (err) {
+    res.status(500).json({ message: `Internal server error: ${err}` });
+  }
+});
