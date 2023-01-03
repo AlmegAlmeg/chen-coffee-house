@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import Navbar from "./components/NavBar";
 import ProductPage from "./pages/Products/Products";
-import SingleProduct from "./pages/SingleProduct";
+// import SingleProduct from "./pages/SingleProduct/SingleProduct";
 import "./App.scss";
 import "./main.scss";
 import CartProvider from "./context/CartContext";
@@ -15,7 +15,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductPage />} />
-          <Route path="/:slug/product" element={<SingleProduct />} />
+          {/* <Route path="/:slug/product" element={<SingleProduct />} /> */}
         </Routes>
       </main>
     </CartProvider>

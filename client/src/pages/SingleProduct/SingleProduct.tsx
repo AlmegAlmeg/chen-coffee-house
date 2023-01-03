@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { CiCoffeeBean } from "react-icons/ci";
 
 const SingleProduct = () => {
   const { slug } = useParams();

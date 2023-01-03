@@ -23,7 +23,7 @@ export default function ProductPage() {
     axios.get(url).then((res) => {
       if (!res || res.status !== 200) return;
       console.log(res);
-      setProducts(res.data.data);
+      setProducts(res.data);
     });
   }, []);
 

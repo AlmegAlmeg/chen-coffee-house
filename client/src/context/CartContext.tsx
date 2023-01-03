@@ -23,7 +23,7 @@ type CartProviderProps = {
  */
 type CartContextType = {
   items: Array<CartItem>;
-  updateCart: (id: string) => void;
+  updateCart: (id: string, increment: boolean) => void;
   deleteItem: (id: string) => void;
   deleteCart: () => void;
   getItemQuantity: (id: string) => number;
@@ -45,12 +45,26 @@ const CartContext = createContext({} as CartContextType);
  * @param props holds the entire app inside.
  * @returns the app itself with all the children inside.
  */
-const CartProvider = (props: CartProviderProps): ReactNode => {
+const CartProvider = (props: CartProviderProps): JSX.Element => {
   /**
    * This is our state. Notice that we export only the items
    * and not the setItems function!
    */
-  const [items, setItems] = useState<Array<CartItem>>([]);
+  const [items, setItems] = useState<Array<CartItem>>([
+    {
+      id: "item01",
+      quantity: 5,
+    },
+
+    {
+      id: "item02",
+      quantity: 3,
+    },
+    {
+      id: "item03",
+      quantity: 10,
+    },
+  ]);
 
   /**
    * It's easier to get the index of the item in our state than
@@ -65,9 +79,8 @@ const CartProvider = (props: CartProviderProps): ReactNode => {
    * item is not found, will return -1
    */
   const _findIndexById = (id: string): number => {
-    /* Do something */
-
-    return 0; //!TEMPORAL
+    const index = items.findIndex((item) => item.id === id);
+    return index;
   };
 
   /**
@@ -80,8 +93,20 @@ const CartProvider = (props: CartProviderProps): ReactNode => {
    *
    * @param id product id
    */
-  const updateCart = (id: string): void => {
-    /* Do something */
+  const updateCart = (id: string, increment: boolean): void => {
+    const i: number = _findIndexById(id);
+
+    setItems((preValue) => {
+      if (i === -1) {
+        if (!increment) return preValue;
+        else preValue.push({ id, quantity: 1 });
+      } else {
+        if (increment) preValue[i].quantity++;
+        else if (preValue[i].quantity === 1) preValue.splice(i, 1);
+        else preValue[i].quantity--;
+      }
+      return preValue.map((a) => a);
+    });
   };
 
   /**
@@ -91,7 +116,12 @@ const CartProvider = (props: CartProviderProps): ReactNode => {
    * @param id product id
    */
   const deleteItem = (id: string): void => {
-    /* Do something */
+    const i: number = _findIndexById(id);
+    if (i === -1) return;
+    setItems((preValue) => {
+      preValue.splice(i, 1);
+      return preValue.map((a) => a);
+    });
   };
 
   /**
@@ -99,7 +129,7 @@ const CartProvider = (props: CartProviderProps): ReactNode => {
    * This function is the easiest.
    */
   const deleteCart = (): void => {
-    /* Do something */
+    setItems([]);
   };
 
   /**
@@ -111,7 +141,7 @@ const CartProvider = (props: CartProviderProps): ReactNode => {
    * @returns a quantity
    */
   const getItemQuantity = (id: string): number => {
-    /* Do something */
+    const i: number = _findIndexById(id);
 
     return 0; //!TEMPORAL
   };
