@@ -1,5 +1,7 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
-import { CartItem } from '../model/CartItem';
+import { createContext, ReactNode, useContext, useState } from "react";
+import { CartItem } from "../model/CartItem";
+import { Product } from "../model/Product";
+import { allProducts } from "../services/products";
 
 type CartProviderProps = {
   children: ReactNode;
@@ -17,21 +19,7 @@ type CartContextType = {
 const CartContext = createContext({} as CartContextType);
 
 const CartProvider = (props: CartProviderProps): JSX.Element => {
-  const [items, setItems] = useState<Array<CartItem>>([
-    {
-      id: 'item01',
-      quantity: 5,
-    },
-
-    {
-      id: 'item02',
-      quantity: 3,
-    },
-    {
-      id: 'item03',
-      quantity: 10,
-    },
-  ]);
+  const [items, setItems] = useState<Array<CartItem>>([]);
 
   const _findIndexById = (id: string): number => {
     const index = items.findIndex((item) => item.id === id);
@@ -73,14 +61,22 @@ const CartProvider = (props: CartProviderProps): JSX.Element => {
 
   const getItemQuantity = (id: string): number => {
     const i: number = _findIndexById(id);
-
-    return 0; //!TEMPORAL
+    if (i === -1) return 0;
+    return items[i].quantity;
   };
 
   const getCartTotal = (): number => {
-    /* Do something */
+    let total = 0;
 
-    return 0; //!TEMPORAL
+    for (let item of items) {
+      const prod: Product | undefined = allProducts.find(
+        (product) => product.id === item.id
+      );
+      if (prod === undefined) continue;
+      total = total + item.quantity * prod.price;
+    }
+
+    return total;
   };
 
   const contextValue = {
@@ -92,7 +88,11 @@ const CartProvider = (props: CartProviderProps): JSX.Element => {
     getCartTotal,
   };
 
-  return <CartContext.Provider value={contextValue}>{props.children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={contextValue}>
+      {props.children}
+    </CartContext.Provider>
+  );
 };
 
 export const useCart = () => useContext(CartContext);
